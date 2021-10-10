@@ -3,8 +3,11 @@
 import("background.js")
 
 document.getElementById("show").addEventListener("click", ShowFolder);
-document.getElementById("create_tab").addEventListener("click", OpenMyweb_tabs);
-document.getElementById("create_window").addEventListener("click", OpenMyweb_window);
+document.getElementById("create_tab").addEventListener("click", (e) => OpenMyweb_tabs("localhost:8069"));
+document.getElementById("create_window").addEventListener("click", (e) => OpenMyweb_window("localhost:8069"));
+document.getElementById("create_tab_sher").addEventListener("click", (e) => OpenMyweb_tabs("Shersoft.vindians.in"));
+document.getElementById("create_window_sher").addEventListener("click", (e) => OpenMyweb_window("Shersoft.vindians.in"));
+
 
 function create() {
     OpenMyweb();
@@ -18,14 +21,14 @@ function ShowFolder() {
 }
 
 // var show = alert('hello');
-function OpenMyweb_window() {
+function OpenMyweb_window(url) {
     chrome.windows.create({
-        url: 'http://localhost:8069'
+        url: `http://${url}`
     });
 }
 
-function OpenMyweb_tabs() {
+function OpenMyweb_tabs(url) {
     chrome.tabs.create({
-        url: 'http://localhost:8069'
+        url: `http://${url}`
     });
 }

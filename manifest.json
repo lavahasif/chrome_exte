@@ -12,9 +12,60 @@
   },
   "permissions": [
     "tabs",
+    "activeTab",
     "downloads",
     "bookmarks",
     "activeTab",
+    "contextMenus",
     "declarativeContent"
-  ]
+  ],
+  "icons": {
+    "16": "icons/Icon-192.png",
+    "48": "icons/Icon-192.png",
+    "128": "icons/Icon-192.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "css": [
+        "css/w3.css"
+      ],
+      "js": [
+        "js/jquery.min.js",
+
+        "contentscript.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "html/*.html"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+  "commands": {
+    "run-foo": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+8",
+        "mac": "Command+Shift+8"
+      },
+      "description": "Run \"foo\" on the current page."
+    }
+  },
+  "_execute_browser_action": {
+    "suggested_key": {
+      "windows": "Ctrl+Shift+8",
+      "mac": "Command+Shift+8",
+      "chromeos": "Ctrl+Shift+8",
+      "linux": "Ctrl+Shift+8"
+    }
+  }
 }
